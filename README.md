@@ -8,6 +8,10 @@
 #### 使用说明
 
 - 配置中间件
+  - ShowInDebug以及ShowInConsole可以控制跟踪信息的输出方式
+  - KeyTabs/ValueTabs可以控制显示格式(设置列)
+  - CheckApiPaths/IgnoreApiPaths可以筛选指定URL
+  - 为ControllerBase提供扩展,当你在使用WebApi时，可以使用Recoder("xxx")方法对返回结果进行记录
 
 ```C#
 public void ConfigureServices(IServiceCollection services)
@@ -49,6 +53,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
    - 提高信息的完整性
    - 制定灵活的显示规则
    - 解决并发问题，支持文件操作
+   - 规范变量的命名，如果有必要
 
 #### 更新日志
 
