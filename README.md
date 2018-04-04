@@ -24,19 +24,25 @@
 ```C#
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddContextShow((request, response) => {
-        
-        //It would be no use when WaitForResponse=true
-        request.WaitForResponse=true;
-        
-        request.ShowInDebug = false;
-        response.ShowInDebug = false;
+     services.AddContextShow((option) => {  
+ 
+      option.ShowInConsole = true;
+      option.IsMergeInfo = true;
+      option.AddEnter(".*");
+      option.AddIgnore("/favicon.ico");
 
-        request.IsFilterApiPaths = true;
-        //配置过滤规则
-        request.CheckApiPaths.Add(".*");
-        request.IgnoreApiPaths.Add("/favicon.ico");
-    });
+      //If you want to use the default setting. You can remove this method.
+
+       }).AddRequestShow((option)=> {
+
+      //If you want to use the default setting. You can remove this method.
+
+       }).AddResponseShow((option) => {
+
+      //If you want to use the default setting. You can remove this method.
+
+       })
+         .RegisterContextShow();
     services.AddMvc();
 }
 ```
@@ -68,7 +74,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 #### 项目计划
 
-- [ ] 显示返回码
+- [x] 显示返回码
 - [ ] 增加返回码过滤规则
 - [ ] 显示匹配路由
 - [ ] 支持I/O操作
@@ -79,3 +85,4 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 #### 更新日志
 
    - 2018-04-01：愚人节，今天将源代码上传到Github. 希望迭代几次之后能够正式发布到Nuget.
+   - 2018-04-05：清明节，重构了大量代码，进一步抽象Option实体类，提高代码重用率，将服务扩展分开，使服务创建逻辑更加清晰。
