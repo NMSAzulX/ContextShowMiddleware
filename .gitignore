@@ -1,6 +1,13 @@
 ContextShow/bin/Debug/netcoreapp2.0/ContextShow.deps.json
+<<<<<<< HEAD
 /.vs/ContextShow/v15/Server/sqlite3
 /ContextShow/bin
 /ContextShow/obj
 /Demo/bin/Debug/netcoreapp2.0
 /Demo/obj
+=======
+/Demo
+/.vs/ContextShow/v15/Server/sqlite3
+/ContextShow/obj
+/ContextShow/bin
+>>>>>>> origin/master

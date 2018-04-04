@@ -194,7 +194,11 @@ namespace ContextShow
                 }
             }
 
+<<<<<<< HEAD
             if (_request_option.ShowContent)
+=======
+            if (_request_options.ShowContent && _request_options.ShowHasSteam)
+>>>>>>> origin/master
             {
                 request.Body.Position = 0;
                 content = new StreamReader(request.Body).ReadToEnd();
@@ -202,11 +206,18 @@ namespace ContextShow
                 builder.AppendLine($"{RequestKeyTabs}Content:{LessRequestValueTabs}{content}");
             }
 
+<<<<<<< HEAD
             if (!_main_option.IsMergeInfo)
             {
 
                 builder.AppendLine(_main_option.SpliteLine);
                 if (_main_option.ShowInDebug)
+=======
+            if (!_request_options.WaitForResponse)
+            {
+                builder.AppendLine("\r\n==================================================================================================================");
+                if (_request_options.ShowInDebug)
+>>>>>>> origin/master
                 {
                     Debug.WriteLine(builder.ToString());
                 }
