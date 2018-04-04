@@ -24,16 +24,25 @@ namespace Demo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddContextShow((request, response) => {
+            services.AddContextShow((option) => {            
+                
+                option.ShowInConsole = true;
+                option.IsMergeInfo = true;
+                option.AddEnter(".*");
+                option.AddIgnore("/favicon.ico");
 
-                //It would be no use when WaitForResponse=true
-                request.ShowInDebug = false;
-                response.ShowInDebug = false;
+                //If you want to use the default setting. You can remove this method.
 
-                request.IsFilterApiPaths = true;
-                request.CheckApiPaths.Add(".*");
-                request.IgnoreApiPaths.Add("/favicon.ico");
-            });
+            }).AddRequestShow((option)=> {
+
+                //If you want to use the default setting. You can remove this method.
+
+            }).AddResponseShow((option) => {
+
+                //If you want to use the default setting. You can remove this method.
+
+            }).RegisterContextShow();
+
             services.AddMvc();
         }
 
