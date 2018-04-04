@@ -1,1 +1,5 @@
 ContextShow/bin/Debug/netcoreapp2.0/ContextShow.deps.json
+/Demo
+/.vs/ContextShow/v15/Server/sqlite3
+/ContextShow/obj
+/ContextShow/bin
