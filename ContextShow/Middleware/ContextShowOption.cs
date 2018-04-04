@@ -11,6 +11,7 @@ namespace ContextShow
             ShowTime = true;
             ShowUrl = true;
             ShowQueryString = true;
+            ShowContent = true;
             ShowHeader = true;
             ShowLocalAddress = true;
             ShowRemoteAddress = true;

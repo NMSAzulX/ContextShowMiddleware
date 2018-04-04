@@ -207,17 +207,12 @@ namespace ContextShow
                 }
             }
 
-            if (_request_options.ShowContent)
+            if (_request_options.ShowContent && _request_options.ShowHasSteam)
             {
                 request.Body.Position = 0;
                 content = new StreamReader(request.Body).ReadToEnd();
                 request.Body.Position = 0;
                 builder.AppendLine($"{RequestKeyTabs}Content:{LessRequestValueTabs}{content}");
-            }
-
-            if (_request_options.ShowHasSteam)
-            {
-                builder.AppendLine(request.Body == null ? $"{RequestKeyTabs}Has Stream and Length:{request.Body.Length} Current Pos:{request.Body.Position}" : $"{RequestKeyTabs}Body:{RequestValueTabs}No Stream.");
             }
 
             if (!_request_options.WaitForResponse)
