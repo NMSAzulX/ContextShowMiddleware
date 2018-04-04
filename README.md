@@ -26,24 +26,24 @@ public void ConfigureServices(IServiceCollection services)
 {
      services.AddContextShow((option) => {  
  
-      option.ShowInConsole = true;
-      option.IsMergeInfo = true;
-      option.AddEnter(".*");
-      option.AddIgnore("/favicon.ico");
+        option.ShowInConsole = true;
+        option.IsMergeInfo = true;
+        option.AddEnter(".*");
+        option.AddIgnore("/favicon.ico");
 
-      //If you want to use the default setting. You can remove this method.
+        //If you want to use the default setting. You can remove this method.
 
        }).AddRequestShow((option)=> {
 
-      //If you want to use the default setting. You can remove this method.
+        //If you want to use the default setting. You can remove this method.
 
        }).AddResponseShow((option) => {
 
-      //If you want to use the default setting. You can remove this method.
+        //If you want to use the default setting. You can remove this method.
 
-       })
-         .RegisterContextShow();
-    services.AddMvc();
+       }).RegisterContextShow();
+         
+      services.AddMvc();
 }
 ```
 
