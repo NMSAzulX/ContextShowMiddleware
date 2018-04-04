@@ -11,11 +11,8 @@ namespace ContextShow
         public ContextShowRequestOption()
         {
             ShowQueryString = true;
-<<<<<<< HEAD
-=======
             ShowContent = true;
             ShowHeader = true;
->>>>>>> origin/master
             ShowLocalAddress = true;
             ShowRemoteAddress = true;
             ShowCookies = true;
