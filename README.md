@@ -75,7 +75,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 #### 项目计划
 
 - [x] 显示返回码
-- [ ] 增加返回码过滤规则
+- [x] 增加返回码过滤规则
 - [ ] 显示匹配路由
 - [ ] 支持I/O操作
 - [ ] 支持数据库操作
@@ -86,3 +86,4 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
    - 2018-04-01：愚人节，今天将源代码上传到Github. 希望迭代几次之后能够正式发布到Nuget.
    - 2018-04-05：清明节，重构了大量代码，进一步抽象Option实体类，提高代码重用率，将服务扩展分开，使服务创建逻辑更加清晰。
+   - 2018-04-06：增加根据返回码过滤。
