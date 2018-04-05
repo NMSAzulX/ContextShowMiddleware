@@ -34,6 +34,8 @@ namespace ContextShow
         }
         public bool ShowStatueCode;
 
+
+
     }
 
     public abstract class AbstractContextShowOption
@@ -108,16 +110,22 @@ namespace ContextShow
             Console.WindowHeight = 50;
             Console.WindowWidth = 115;
             IsFilterApiPaths = false;
+            IsFilterCodes = false;
             EnterApiPaths = new List<string>();
             IgnoreApiPaths = new List<string>();
+            AcceptCodes = new HashSet<int>();
+            DenialCodes = new HashSet<int>();
             IsMergeInfo = true;
             SpliteLine = "\r\n==================================================================================================================\r\n";
         }
         public bool ShowInConsole;
         public bool ShowInDebug;
         public bool IsFilterApiPaths;
+        public bool IsFilterCodes;
         public List<string> EnterApiPaths;
         public List<string> IgnoreApiPaths;
+        public HashSet<int>AcceptCodes;
+        public HashSet<int> DenialCodes;
         public bool IsMergeInfo;
         public string SpliteLine;
 
@@ -141,6 +149,43 @@ namespace ContextShow
             IgnoreApiPaths.Add(path);
             return this;
         }
+        /// <summary>
+        /// 添加可显示的返回码
+        /// </summary>
+        /// <param name="code">Http Retrun Code 返回码</param>
+        /// <returns></returns>
+        public ContextShowOption AddAcceptCodes(int code)
+        {
+            AcceptCodes.Add(code);
+            return this;
+        }
+        /// <summary>
+        /// 添加拒绝显示的返回码
+        /// </summary>
+        /// <param name="code">Http Retrun Code 返回码</param>
+        /// <returns></returns>
+        public ContextShowOption AddDenialCodes(int code)
+        {
+            DenialCodes.Add(code);
+            return this;
+        }
+
+        public bool Pass(int code)
+        {
+            if (IsFilterCodes)
+            {
+                if (!AcceptCodes.Contains(code))
+                {
+                    return false;
+                }
+            }
+            if (DenialCodes.Contains(code))
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         public Regex[] EnterApis
         {

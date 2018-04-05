@@ -76,7 +76,6 @@ namespace ContextShow
         {
 
             HttpRequest request = context.Request;
-
             int result = 0;
             if (_main_option.IsFilterApiPaths)
             {
@@ -127,7 +126,7 @@ namespace ContextShow
             }
             if (_request_option.ShowUrl)
             {
-                builder.AppendLine($"{RequestKeyTabs}Url:{RequestValueTabs}{context.Connection.LocalIpAddress}:{context.Connection.LocalPort}{request.Path.Value}");
+                builder.AppendLine($"{RequestKeyTabs}Url:{RequestValueTabs}{request.Host}{request.Path.Value}");
             }
             if (_request_option.ShowApiPath)
             {
@@ -257,14 +256,17 @@ namespace ContextShow
             {
                 await next(context);
             }
-
+            if (!_main_option.Pass(response.StatusCode))
+            {
+                return;
+            }
             if (_response_option.ShowTime)
             {
                 builder.AppendLine($"{ResponseKeyTabs}RtTime:{RequestValueTabs}{DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss.ffff")}");
             }
             if (_response_option.ShowUrl)
             {
-                builder.AppendLine($"{ResponseKeyTabs}Url:{RequestValueTabs}{context.Connection.LocalIpAddress}:{context.Connection.LocalPort}{request.Path.Value}");
+                builder.AppendLine($"{ResponseKeyTabs}Url:{RequestValueTabs}{request.Host}{request.Path.Value}");
             }
             if (_response_option.ShowStatueCode)
             {
