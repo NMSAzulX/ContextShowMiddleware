@@ -34,8 +34,6 @@ namespace ContextShow
         }
         public bool ShowStatueCode;
 
-
-
     }
 
     public abstract class AbstractContextShowOption
